@@ -7,7 +7,9 @@ import { Card } from "@/components/card/Card";
 export default async function Home() {
 
   const cardList = await prisma.Card.findMany();
-    
+  if (!cardList) {
+    return <div className={styles.notFound}>Product not found</div>;
+  }  
 
   return (
     <div className={styles.page}>
