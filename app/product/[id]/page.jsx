@@ -9,11 +9,16 @@ export default async function ProductPage({ params }) {
 
   // Ищем продукт по ID
   const products = await prisma.Card.findMany();
-
-  // Если товар не найден
   if (!products) {
-    return <div className={styles.notFound}>Product not found</div>;
+    return {
+      notFound: true,
+    }
   }
+  
+  // Если товар не найден
+  //if (!products) {
+  //  return <div className={styles.notFound}>Product not found</div>;
+  //}
 
   return (
     <div className={styles.page}>
